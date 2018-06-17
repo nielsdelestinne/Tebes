@@ -1,0 +1,6 @@
+rootProject.name = 'tebes'
+
+include 'tebes-backend'
+include 'tebes-frontend'
+include 'tebes-deploy'
+

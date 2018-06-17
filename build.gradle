@@ -1,0 +1,36 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+group 'be.niedel.tebes'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+subprojects {
+
+    sourceCompatibility = 1.8
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        dependencies {
+            dependency "org.springframework.boot:spring-boot-starter-websocket:${springBootVersion}"
+            dependency "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+        }
+    }
+
+}
