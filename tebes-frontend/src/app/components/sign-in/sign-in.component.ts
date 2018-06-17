@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "./User";
+import {User} from "../../domain/User";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html'
 })
-export class AppComponent implements OnInit{
+export class SignInComponent implements OnInit{
 
   public user: User;
   private hasEagerlyClickedPlay: boolean;
@@ -21,12 +20,12 @@ export class AppComponent implements OnInit{
   }
 
   onPlay(): void {
-      if(this.hasValidUsername()) {
-        console.log("jup");
-        this.hasClickedPlay = true;
-      } else {
-        this.hasEagerlyClickedPlay = true;
-      }
+    if(this.hasValidUsername()) {
+      console.log("jup");
+      this.hasClickedPlay = true;
+    } else {
+      this.hasEagerlyClickedPlay = true;
+    }
   }
 
   hasValidUsername(): boolean {
