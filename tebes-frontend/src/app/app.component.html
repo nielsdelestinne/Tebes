@@ -16,20 +16,32 @@
 
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input is-large" type="text" placeholder="Your username">
+              <input class="input is-large"
+                     #usernameInput="ngModel"
+                     type="text" placeholder="Your username"
+                     [ngClass]="{'is-danger': !hasValidUsername() && (usernameInput.dirty || usernameInput.touched || hasEagerlyClickedPlayButton())}"
+                     [(ngModel)]="user.username">
               <span class="icon is-large is-left">
                 <i class="fas fa-user"></i>
               </span>
             </p>
+            <p *ngIf="!hasValidUsername() && (usernameInput.dirty || usernameInput.touched || hasEagerlyClickedPlayButton())"
+               class="help is-danger">This username is invalid</p>
           </div>
 
-          <div class="field">
-            <a class="button is-large">
+          <div *ngIf="!hasClickedPlayButton()" class="field">
+            <a class="button is-large"
+               [ngClass]="{'is-success': hasValidUsername(), 'is-danger': !hasValidUsername()}"
+               (click)="onPlay()">
               <span class="icon is-large">
                 <i class="fas fa-play"></i>
               </span>
               <span>Play</span>
             </a>
+          </div>
+
+          <div *ngIf="hasClickedPlayButton()" class="field">
+            <a class="button is-large is-success is-loading">Loading</a>
           </div>
 
         </div>
