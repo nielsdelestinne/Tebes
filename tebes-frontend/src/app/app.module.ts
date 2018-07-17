@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 import {SignInComponent} from './components/sign-in/sign-in.component';
+import {SignInSocketService} from "./services/sign-in-socket.service";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,10 @@ import {SignInComponent} from './components/sign-in/sign-in.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    SignInSocketService
+  ],
   bootstrap: [SignInComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

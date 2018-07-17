@@ -1,31 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from "../../domain/User";
+import {SignInSocketService} from "../../services/sign-in-socket.service";
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html'
 })
-export class SignInComponent implements OnInit{
+export class SignInComponent implements OnInit, OnDestroy{
 
   public user: User;
+
   private hasEagerlyClickedPlay: boolean;
   private hasClickedPlay: boolean;
-
-  constructor() {
-
-  }
+  constructor(private signInService: SignInSocketService) {}
 
   ngOnInit(): void {
     this.user = new User('');
   }
 
-  onPlay(): void {
-    if(this.hasValidUsername()) {
-      console.log("jup");
-      this.hasClickedPlay = true;
-    } else {
-      this.hasEagerlyClickedPlay = true;
-    }
+  ngOnDestroy(): void {
+    // Not yet implemented
   }
 
   hasValidUsername(): boolean {
